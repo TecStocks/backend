@@ -1,13 +1,18 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const router = express.Router()
 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+const signup = require('./routes/register')
+app.use('/signup', signup)
+
 const login = require('./routes/login')
 app.use('/user', login)
+
+const admin = require('./routes/admin')
+app.use('/admin', admin)
 
 module.exports = app

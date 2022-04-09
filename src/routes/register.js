@@ -9,7 +9,7 @@ const User = require('../models/User')
 const secret = process.env.SECRET
 
 // CREATES A NEW USER
-router.post('/register', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     /* hash password */
 
@@ -19,7 +19,8 @@ router.post('/register', async (req, res) => {
       {
         name: req.body.name,
         email: req.body.email,
-        password: hashedPassword
+        password: hashedPassword,
+        equipment: req.body.equipment
       },
       (err, user) => {
         console.log(err)

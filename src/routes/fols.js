@@ -5,9 +5,11 @@ const Fols = require('../models/Fols')
 // db.stores.find({ $text: { $search: 'java coffee shop' } })
 
 router.get('/search', async (req, res) => {
-  let keyword = req.query['keyword']
-  const data = Fols.find({ $text: { $search: keyword } })
+  let keyword = req.query['car'] + ' ' + req.query['keyword']
+  const data = await Fols.find({ $text: { $search: keyword } })
+  console.log(keyword)
   console.log(data)
+
   res.status(200)
 })
 

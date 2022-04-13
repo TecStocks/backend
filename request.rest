@@ -1,5 +1,6 @@
 GET http://localhost:3100/fols/search
 ?keyword=Loss
+&car=Mercedes
 Content-Type: application/json
 
 ###

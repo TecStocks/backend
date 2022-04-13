@@ -17,8 +17,7 @@ router.post('/', async (req, res) => {
   let status = 'IN EFFECT'
 
   const data = await Fols.find({ Equipment: car, Status: status })
-  console.log(data)
-  res.status(200)
+  res.status(200).send(data)
 })
 
 module.exports = router

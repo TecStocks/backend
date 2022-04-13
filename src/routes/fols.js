@@ -7,10 +7,8 @@ const Fols = require('../models/Fols')
 router.get('/search', async (req, res) => {
   let keyword = req.query['car'] + ' ' + req.query['keyword']
   const data = await Fols.find({ $text: { $search: keyword } })
-  console.log(keyword)
-  console.log(data)
 
-  res.status(200)
+  res.status(200).send(data)
 })
 
 router.post('/', async (req, res) => {

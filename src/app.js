@@ -15,4 +15,7 @@ app.use('/user', login)
 const admin = require('./routes/admin')
 app.use('/admin', admin)
 
+const fols = require('./routes/fols')
+app.use('/fols', fols)
+
 module.exports = app

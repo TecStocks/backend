@@ -1,40 +1,31 @@
 const express = require('express')
 const router = express.Router()
-const bodyParser = require('body-parser')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const User = require('../models/User')
-
-const secret = process.env.SECRET
+const authenticate = require('../controllers/auth')
 
 router.post('/login', async (req, res) => {
-  User.findOne({ email: req.body.email }, async (err, user) => {
-    if (err) {
-      return res.status(500).send('Error on the server.')
-    }
-    if (!user) {
-      return res.status(404).send('No user found')
-    }
+  const login = req.body.login
+  const password = req.body.password
 
-    try {
-      const passwordIsValid = await bcrypt.compare(
-        req.body.password,
-        user.password
-      )
-      if (!passwordIsValid) {
-        return res.status(401).send({ auth: false, token: null })
-      }
+  let user
+  const data = await authenticate(login, password)
+  let response = data ? 200 : 401
 
-      const token = jwt.sign({ id: user._id }, secret, {
-        expiresIn: '15m'
-      })
-
-      res.status(200).send({ auth: true, token: token })
-    } catch {
-      res.status(500).send()
+  if (response == 200) {
+    user = {
+      _id: data._id,
+      username: data.Username,
+      login: data.Login,
+      equipment: data.Equipment
     }
-  })
+  } else {
+    user = {
+      auth: false
+    }
+  }
+
+  res.status(response).send(user)
 })
 
 router.get('/logout', (req, res) => {

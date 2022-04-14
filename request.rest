@@ -1,6 +1,6 @@
 GET http://localhost:3100/fols/search
-?keyword=Loss
-&car=Mercedes
+?keyword=
+&car=
 Content-Type: application/json
 
 ###
@@ -29,6 +29,6 @@ POST http://localhost:3100/user/login
 Content-Type: application/json
 
 {
-  "email": "guilherme@email.com",
-  "password": "1234test"
+  "login": "koliveira",
+  "password": "429260"
 }

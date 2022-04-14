@@ -1,19 +1,20 @@
 # backend
 
-### Instalar dependências
+### Install dependencies
 
 ```sh
 npm install
 ```
 
-### Iniciar ambiente de desenvolvimento: 
+### Start development server: 
 
 ```sh
 npm run dev
 ```
 
-#### Criar arquivo .ENV com a url de conexão do mongodb:
+#### Setup environment variables:
 
 ```sh
 MONGO_URI=
+PORT =    //if is not defined will run on 3100
 ```

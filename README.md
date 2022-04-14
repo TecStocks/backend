@@ -1,5 +1,13 @@
 # backend
 
+
+## Prerequisites
+```sh
+Node.js
+Visual Studio Code
+Insomnia to test server URLs
+```
+
 ### Install dependencies
 
 ```sh

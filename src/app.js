@@ -6,16 +6,14 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const signup = require('./routes/register')
-app.use('/signup', signup)
 
-const login = require('./routes/login')
+const login = require('./routes/Usuario.routes')
 app.use('/user', login)
 
-const admin = require('./routes/admin')
+const admin = require('./routes/Admin.routes')
 app.use('/admin', admin)
 
-const fols = require('./routes/fols')
+const fols = require('./routes/Fols.routes')
 app.use('/fols', fols)
 
 module.exports = app

@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const User = require('../models/UserSchema')
 
 const authenticate = async (login, password) => {
   let data = await User.findOne({ Login: login, Password: password })

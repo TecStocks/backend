@@ -32,3 +32,12 @@ Content-Type: application/json
   "login": "koliveira",
   "password": "429260"
 }
+
+###
+
+DELETE http://localhost:3100/user/remove
+Content-Type: application/json
+
+{
+  "_id": "6280117312ca3ab6230e4097"
+}

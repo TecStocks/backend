@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const User = require('../models/UserSchema')
 const user_table = require('./loginsjson.json')
 
 const populate = async () => {

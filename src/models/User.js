@@ -1,12 +1,10 @@
-/* user schema */
-const mongoose = require('mongoose')
+const User = require('./UserSchema')
+const RemovedUser = require('./RemovedUserSchema')
 
-const UserSchema = new mongoose.Schema({
-  Username: String,
-  Login: String,
-  Password: String,
-  Equipment: String
-})
-mongoose.model('User', UserSchema)
+async function removeId(id) {
+  const removedUser = await RemovedUser.create({ cod: id })
+  const user = await User.deleteOne({ _id: id })
+  return user
+}
 
-module.exports = mongoose.model('User')
+module.exports = removeId

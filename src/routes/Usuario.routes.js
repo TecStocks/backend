@@ -7,6 +7,6 @@ const { login, token, logout, remove } = new UsuarioController()
 router.post('/login', login)
 router.get('/me', token)
 router.get('/logout', logout)
-router.delete('/remove', remove)
+router.post('/remove', remove)
 
 module.exports = router

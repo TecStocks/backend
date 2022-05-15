@@ -9,7 +9,6 @@ const port = process.env.PORT | 3100
 // populate()
 check()
 
-
 const server = app.listen(port, () => {
   console.log(`Express server listening on PORT: ${port}`)
 })

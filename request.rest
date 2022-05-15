@@ -35,9 +35,9 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3100/user/remove
+POST http://localhost:3100/user/remove
 Content-Type: application/json
 
 {
-  "_id": "6280117312ca3ab6230e4097"
+  "chave": "62816586e4c4bfbc24d56069"
 }

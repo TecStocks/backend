@@ -7,10 +7,7 @@ const authenticate = require('../controllers/auth')
 
 const secret = process.env.SECRET
 
-
 class UsuarioController {
-  
-
   async login(req, res) {
     const login = req.body.login
     const password = req.body.password
@@ -69,7 +66,7 @@ class UsuarioController {
   }
 
   async remove(req, res) {
-    const data = await removeId(req.body._id)
+    const data = await removeId(req.body.chave)
 
     res.status(200).send(data)
   }

@@ -2,40 +2,14 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const User = require('../models/UserSchema')
-const removeId = require('../models/user')
+const removeId = require('../models/User')
 const authenticate = require('../controllers/auth')
 
 const secret = process.env.SECRET
 
-// CREATES A NEW USER
+
 class UsuarioController {
-  async create(req, res) {
-    try {
-      /* hash password */
-
-      const hashedPassword = await bcrypt.hash(req.body.password, 10)
-
-      User.create(
-        {
-          name: req.body.name,
-          email: req.body.email,
-          password: hashedPassword,
-          equipment: req.body.equipment
-        },
-        (err, user) => {
-          console.log(err)
-          const token = jwt.sign({ id: user._id }, secret, {
-            expiresIn: '15m'
-          })
-          res.status(201).send({ auth: true, token })
-        }
-      )
-    } catch {
-      res.status(500).send('There was a problem registering the user')
-    }
-
-    /* insert into db */
-  }
+  
 
   async login(req, res) {
     const login = req.body.login

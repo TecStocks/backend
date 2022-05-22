@@ -4,7 +4,7 @@ GET http://localhost:3100/fols/search
 Content-Type: application/json
 
 ###
-POST http://localhost:3100/fols/
+POST https://54.226.91.70:3100/fols/
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3100/signup/
+POST http://172.31.21.70:3100/signup/
 Content-Type: application/json
 
 {

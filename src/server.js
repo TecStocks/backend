@@ -9,6 +9,8 @@ const port = process.env.PORT | 3100
 // populate()
 check()
 
-const server = app.listen(port, '0.0.0.0', () => {
-  console.log(`Express server listening on PORT: ${port}`)
+const httpServer = require('http').Server(app)
+
+httpServer.listen(port, '0.0.0.0', () => {
+  console.log(`Listen on port: ${port}`)
 })

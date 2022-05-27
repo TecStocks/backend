@@ -4,7 +4,7 @@ const db = require('./database/mongodb')
 // const populate = require('./services/populateDB')
 const check = require('./services/CheckDeletedUsers')
 
-const port = process.env.PORT | 3100
+const port = process.env.PORT | 3001
 
 // populate()
 check()

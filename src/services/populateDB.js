@@ -1,12 +1,16 @@
 const User = require('../models/UserSchema')
 const user_table = require('./loginsjson.json')
+const bcrypt = require('bcrypt')
 
 const populate = async () => {
-  try {
-    await User.deleteMany({})
-    await User.create(user_table, { upsert: true })
-  } catch (err) {
-    console.log(err)
+  for await (user of user_table) {
+    let cars = user.Equipment.split(',')
+    let Username = user.Username
+    let Login = user.Login
+    let Password = await bcrypt.hash(user.Password, 10)
+    let Equipment = cars
+
+    User.create({ Username, Login, Password, Equipment })
   }
 }
 

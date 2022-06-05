@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const Fols = require('../models/Fols')
 require('dotenv').config()
 const User = require('../models/UserSchema')
+const Notifications = require('../models/Notificate')
 
 
 
@@ -36,12 +37,13 @@ class AdminController {
       let { Title, Equipment, Description, Applicability, IssueDescription, Category, Status,IssueDate, RevisionNumber, Keywords, RevisionDate  } = req.body
       // let options = { year: 'numeric', month: '2-digit', day: '2-digit' };
       const locale = 'pt-Br'
-     new Date().toLocaleDateString(locale)
+     let Data = new Date().toLocaleDateString(locale)
+     console.log(Data)
       // console.log(typeof(date))
       // console.log('passei')
       
       
-      return await Fols.create({ 
+      await Fols.create({Data,
         Title, Equipment, Description, Applicability, 'Issue description':IssueDescription, Category, Status,'Issue date':IssueDate, 'Revision number':RevisionNumber, 'Revision date':RevisionDate, Keywords 
       }, 
       (err, fol) => {
@@ -51,8 +53,19 @@ class AdminController {
         res.status(201).send(fol)
     })
 
+     await Notifications.create({Data,Equipment})
+      res.status(201).send()
+     
+
   }
-   
+
+   async listNotification (req, res) {
+    Notifications.find({}, (err, notification) => {
+      if (err)
+        return res.status(500).send('There was a problem finding notifications')
+      res.status(200).send(notification)
+    })
+  }
 
   async list(req, res) {
     User.find({}, (err, users) => {

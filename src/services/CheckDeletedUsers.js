@@ -5,7 +5,7 @@ const populate = require('../services/populateDB')
 
 
 const CheckDeletedUsersService = async () => {
-    await populate()
+    // await populate()
     try {
       
       const removed = await RemovedUser.find()

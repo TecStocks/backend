@@ -1,11 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const { AdminController } = require("../controllers");
-const { list, listUser, deleteUser, updateUser, createUser, createFol } =
+const { list, listUser, deleteUser, updateUser, createUser, createFol, listNotification } =
 	new AdminController();
 
 
 //router.use(bodyParser.json())
+
+router.get('/notification', listNotification)
 
 // RETURNS ALL THE USERS IN THE DATABASE
 router.get('/users', list);
@@ -22,5 +24,6 @@ router.put('/:id', updateUser);
 router.post('/create', createUser);
 
 router.post('/createFol', createFol);
+
 
 module.exports = router

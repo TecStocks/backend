@@ -1,11 +1,59 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const Fols = require('../models/Fols')
 require('dotenv').config()
 const User = require('../models/UserSchema')
+
+
 
 const secret = process.env.SECRET
 
 class AdminController {
+  async createUser (req, res) {
+    
+      const hashedPassword = await bcrypt.hash(req.body.password, 10)
+      User.create(
+      {
+        Username: req.body.username,
+        Login: req.body.login,
+        Password: hashedPassword,
+        Equipment: req.body.equipment,
+        
+      }
+      ,
+      (err, user) => {
+          console.log(err)
+          const token = jwt.sign({ id: user._id }, secret, {
+              expiresIn: '15m'
+          })
+          res.status(201).send({ auth: true, token })
+      }
+    )
+         
+    } 
+
+    async createFol (req, res) {      
+      let { Title, Equipment, Description, Applicability, IssueDescription, Category, Status,IssueDate, RevisionNumber, Keywords, RevisionDate  } = req.body
+      // let options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      const locale = 'pt-Br'
+     new Date().toLocaleDateString(locale)
+      // console.log(typeof(date))
+      // console.log('passei')
+      
+      
+      return await Fols.create({ 
+        Title, Equipment, Description, Applicability, 'Issue description':IssueDescription, Category, Status,'Issue date':IssueDate, 'Revision number':RevisionNumber, 'Revision date':RevisionDate, Keywords 
+      }, 
+      (err, fol) => {
+        if (err)
+        return res.status(500).send('There was a problem creating the Fol')
+        
+        res.status(201).send(fol)
+    })
+
+  }
+   
+
   async list(req, res) {
     User.find({}, (err, users) => {
       if (err)

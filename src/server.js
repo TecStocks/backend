@@ -6,7 +6,7 @@ const populate = require('./services/populateDB')
 
 const port = process.env.PORT | 3001
 
-populate()
+//populate()
 // check()
 
 const httpServer = require('http').Server(app)

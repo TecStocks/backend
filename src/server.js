@@ -3,10 +3,11 @@ const app = require('./app')
 const db = require('./database/mongodb')
 const populate = require('./services/populateDB')
 // const check = require('./services/CheckDeletedUsers')
+const jobs = require ('./services/index')
 
 const port = process.env.PORT | 3001
-
-populate()
+jobs.start()
+// populate()
 // check()
 
 const httpServer = require('http').Server(app)

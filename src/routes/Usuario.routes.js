@@ -8,5 +8,6 @@ router.post('/login', login)
 router.get('/me', token)
 router.get('/logout', logout)
 router.post('/remove', remove)
+router.use((req,res)=>res.send('Url invalida'))
 
 module.exports = router

@@ -1,6 +1,6 @@
 const checkLogin = require('./validateLogin')
 
 test('Entrada do campo login nao e nula', () => {
-    expect(checkLogin()).toBeTruthy()
+    expect(checkLogin("user")).toBeTruthy()
   })
 

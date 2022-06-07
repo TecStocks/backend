@@ -1,4 +1,4 @@
-//Verifica se o valor do login não é nulo
+//Verifica se o valor do login não é null
 const checkNotNull=  (login) =>{
     return login != null && login != undefined
   }

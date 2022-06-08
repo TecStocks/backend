@@ -15,6 +15,10 @@ app.use('/admin', admin)
 const fols = require('./routes/Fols.routes')
 app.use('/fols', fols)
 
+const locate = require('./routes/Locate.routes')
+app.use('/locate', locate)
+
+
 const hello = require('./routes/hello.routes')
 app.use('/', hello)
 
